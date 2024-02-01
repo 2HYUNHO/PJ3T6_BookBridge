@@ -25,8 +25,21 @@ class ChangePasswordVM: ObservableObject {
         }
         
         if isValid {
-            //MARK: 비밀 번호 재 설정 하는 함수 추가 예정
-            Auth.auth().sendPasswordReset(withEmail: email,completion: nil)
+            //MARK: 비밀 번호 재 설정 하는 함수 추가 예정            
+            Auth.auth().sendPasswordReset(withEmail: email) { [self] error in
+                guard let error = error else {
+                    print("메세지 보내기 성공")
+                    return
+                }
+                let nsError : NSError = error as NSError
+                switch nsError.code {
+                case 17011:
+                    print("존재하지 않는 이메일 입니다")
+                default:
+                    break
+                }
+            }
         }
     }
 }
+

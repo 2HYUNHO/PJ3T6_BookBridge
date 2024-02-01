@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FindPasswordView: View {
     @EnvironmentObject private var pathModel: PathViewModel
-    @StateObject private var viewModel = FindIdVM()
+    @StateObject private var viewModel = FindIdViewModel()
     @State private var isNavigationActive = false // 화면 전환 상태 관리
     
     var body: some View {

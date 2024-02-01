@@ -10,7 +10,7 @@ import Firebase
 import SwiftSMTP
 import Combine
 
-class FindIdVM: ObservableObject {
+class FindIdViewModel: ObservableObject {
     @Published var id: String = ""
     @Published var nickname: String = ""
     @Published var email: String = ""
@@ -23,18 +23,22 @@ class FindIdVM: ObservableObject {
     private var authCode: String? // 인증번호
     var isCertiClear = false
     
-    func sendMail() {
-        let mail_to = Mail.User(name: "mail_to", email: email)
-        authCode = createEmailCode()
-        let mail = Mail(
-            from: mail_from,
-            to: [mail_to],
-            subject: "북다리 이메일 인증번호",
-            text: emailContent(code: authCode ?? "")
-        )
-        smtp.send(mail)
-        isCertiActive.toggle()
-        showingTime()
+//    func sendMail() {
+//        let mail_to = Mail.User(name: "mail_to", email: email)
+//        authCode = createEmailCode()
+//        let mail = Mail(
+//            from: mail_from,
+//            to: [mail_to],
+//            subject: "북다리 이메일 인증번호",
+//            text: emailContent(code: authCode ?? "")
+//        )
+//        smtp.send(mail)
+//        isCertiActive.toggle()
+//        showingTime()
+//    }
+    
+    func sendMessage() {
+        
     }
     
     func showingTime() {
@@ -56,11 +60,7 @@ class FindIdVM: ObservableObject {
         }
     }
     
-    func isValidEmail() -> Bool {
-       let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-       let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-       return emailTest.evaluate(with: self.email)
-    }
+
     
     func isCertiCode() -> Bool {
         if userAuthCode == self.authCode {

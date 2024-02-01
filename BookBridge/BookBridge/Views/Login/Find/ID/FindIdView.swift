@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FindIdView: View {
     @EnvironmentObject private var pathModel: PathViewModel
-    @StateObject private var viewModel =  FindIdVM()
+    @StateObject private var viewModel =  FindIdViewModel()
     
     
     var body: some View {
@@ -25,18 +25,18 @@ struct FindIdView: View {
                 Text("가입할 때 입력한")
                     .font(.system(size: 20, weight: .regular))
                 
-                Text("이메일을 입력해주세요")
+                Text("휴대폰 번호을 입력해주세요")
                     .font(.system(size: 20, weight: .regular))
                 
                 Spacer()
                     .frame(height: 80)
                 
-                Text("이메일")
+                Text("휴대폰 번호")
                     .font(.system(size: 12, weight: .regular))
                     .foregroundColor(Color(hex: "999999"))
                 
                 HStack {
-                    TextField("이메일을 입력해 주세요", text: $viewModel.email)
+                    TextField("휴대폰 번호를 입력해 주세요", text: $viewModel.email)
                         .padding()
                         .foregroundColor(Color(hex: "3C3C43"))
                         .frame(height: 36)
@@ -45,8 +45,8 @@ struct FindIdView: View {
                         .cornerRadius(5.0)
                     
                     Button {
-                        viewModel.sendMail()
-                        print("메일을 전송하였습니다.")
+                        viewModel.sendMessage()
+                        print("메시지를 전송했습니다..")
                     } label: {
                         Text("인증하기")
                             .font(.system(size: 17))
@@ -114,7 +114,7 @@ struct FindIdView: View {
     @ViewBuilder
     func ResendBtn() -> some View {
         Button {
-            viewModel.sendMail()
+            viewModel.sendMessage()
         } label: {
             Text("재전송")
                 .font(.system(size: 17))
