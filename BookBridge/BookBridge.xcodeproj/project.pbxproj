@@ -83,6 +83,8 @@
 		91C60CE82B67492500A1E8E4 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C60CE72B67492500A1E8E4 /* StorageManager.swift */; };
 		AFE5B788F315503A86355ABB /* Pods_BookBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D0208E9110CB38EDE3D59A6 /* Pods_BookBridge.framework */; };
 		F623A51D2B68C01E00B5C159 /* NoticeBoardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F623A51C2B68C01E00B5C159 /* NoticeBoardModel.swift */; };
+		F69988522B6CF13A0056380B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69988512B6CF13A0056380B /* HomeView.swift */; };
+		F69988552B6CF19B0056380B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69988542B6CF19B0056380B /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +190,8 @@
 		A5811A49FE2A9EF629A77C52 /* Pods-BookBridge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookBridge.debug.xcconfig"; path = "Target Support Files/Pods-BookBridge/Pods-BookBridge.debug.xcconfig"; sourceTree = "<group>"; };
 		CD38D177426E7831566653B2 /* Pods-BookBridge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookBridge.release.xcconfig"; path = "Target Support Files/Pods-BookBridge/Pods-BookBridge.release.xcconfig"; sourceTree = "<group>"; };
 		F623A51C2B68C01E00B5C159 /* NoticeBoardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBoardModel.swift; sourceTree = "<group>"; };
+		F69988512B6CF13A0056380B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F69988542B6CF19B0056380B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +384,7 @@
 		5A7A4E532B62268A00F79C23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F69988532B6CF1460056380B /* Home */,
 				5A1A168C2B6228150063D408 /* Login */,
 				91C60CE22B67459E00A1E8E4 /* Posting */,
 				5ADE79D62B6B2B02005BB3ED /* SearchBook */,
@@ -537,6 +542,7 @@
 		91C60CE62B6747C400A1E8E4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F69988542B6CF19B0056380B /* HomeViewModel.swift */,
 				5ADE79DB2B6B2D5F005BB3ED /* Login */,
 				5A5041CB2B6A635C00211CF2 /* PathViewModel.swift */,
 				5AA82E512B6761BD006EFC72 /* SignUpViewModel.swift */,
@@ -544,8 +550,6 @@
 				73C962AA2B68C4D800D34D3F /* SearchBooksViewModel.swift */,
 				91C60CE72B67492500A1E8E4 /* StorageManager.swift */,
 				736127102B6B84AC00943CD7 /* PostingViewModel.swift */,
-				F623A51A2B68BFBC00B5C159 /* ChangePostingViewModel.swift */,
-				F623A5262B6A1DFE00B5C159 /* FindPostingViewModel.swift */,
 				1DB39DBB2B6B57F100C1B489 /* BookShelfViewModel.swift */,
 			);
 			path = ViewModel;
@@ -559,6 +563,14 @@
 				A49B59480B4D646B466C597B /* Pods_BookBridgeTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F69988532B6CF1460056380B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F69988512B6CF13A0056380B /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -869,17 +881,15 @@
 				5ADE79DA2B6B2C99005BB3ED /* CertiResult.swift in Sources */,
 				5A9A33852B628D9E00982E92 /* GoogleSignManager.swift in Sources */,
 				91C60CE82B67492500A1E8E4 /* StorageManager.swift in Sources */,
-
 				1D71C6C52B6C766300EEC95D /* BookSearchBar.swift in Sources */,
-
 				736127052B6B538800943CD7 /* NaverLoginView.swift in Sources */,
-
 				91B80A472B6799B7000D5339 /* ChangePostingView.swift in Sources */,
 				1D0A68362B638403006F8A4A /* KakaoLoginView.swift in Sources */,
 				5ADE79DE2B6B3305005BB3ED /* GoogleAuthModel.swift in Sources */,
 				5ADE79E22B6B34D0005BB3ED /* GoogleAuthViewModel.swift in Sources */,
 				736127072B6B543A00943CD7 /* NaverAuthManager.swift in Sources */,
 				5AA82E5E2B67891E006EFC72 /* SmtpManager.swift in Sources */,
+				F69988522B6CF13A0056380B /* HomeView.swift in Sources */,
 				7361270D2B6B83AC00943CD7 /* CameraButtonView.swift in Sources */,
 				5CE454972B68B8CA00874BCE /* AppleLoginView.swift in Sources */,
 				5A5041CE2B6A637A00211CF2 /* PathType.swift in Sources */,
@@ -896,6 +906,7 @@
 				91392F292B68BE0E0092052A /* FindPostingView.swift in Sources */,
 				5CE454992B68B8EF00874BCE /* AppleAuthManager.swift in Sources */,
 				5A1A16962B6231870063D408 /* GoogleAuthManager.swift in Sources */,
+				F69988552B6CF19B0056380B /* HomeViewModel.swift in Sources */,
 				5AA82E4F2B6760C7006EFC72 /* SignUpInputBoxView.swift in Sources */,
 				1DA6E06E2B68E2EA00D631D5 /* FindIdResultView.swift in Sources */,
 				5A2DE09A2B68915200EF3A6B /* SignUpInputer.swift in Sources */,
@@ -903,7 +914,7 @@
 				5A2DE0972B6884BE00EF3A6B /* EmailCertiView.swift in Sources */,
 				F623A51D2B68C01E00B5C159 /* NoticeBoardModel.swift in Sources */,
 				1DB39DBA2B6B57B100C1B489 /* BookShelfView.swift in Sources */,
-				F623A51D2B68C01E00B5C159 /* ChangePostModel.swift in Sources */,
+				F623A51D2B68C01E00B5C159 /* NoticeBoardModel.swift in Sources */,
 				5A1A168E2B6228290063D408 /* GoogleLoginView.swift in Sources */,
 				910F491C2B6CC66900C0563E /* CameraModalView.swift in Sources */,
 				5A5041CC2B6A635C00211CF2 /* PathViewModel.swift in Sources */,
