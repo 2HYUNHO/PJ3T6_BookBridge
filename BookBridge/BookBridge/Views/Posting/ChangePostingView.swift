@@ -3,9 +3,9 @@
 //  BookBridge
 //
 //  Created by 이현호 on 1/29/24.
-// 여기부터
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct ChangePostingView: View {
     @State private var titleText = ""
@@ -16,13 +16,12 @@ struct ChangePostingView: View {
     @State private var showImagePicker = false
     @State private var selectedImages: [UIImage] = []
     
-    
     @State var text: String = ""
     
     @StateObject var changeViewModel = ChangePostViewModel()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     // 이미지 스크롤 뷰
@@ -43,33 +42,20 @@ struct ChangePostingView: View {
                     VStack(alignment: .leading) {
                         Text("상세설명")
                             .bold()
-                        ZStack {
-                            TextEditor(text: $text)
-                                .padding(.leading, 11)
-                                .padding(.trailing, 11)
-                                .padding(.top, 7)
+                        ZStack(alignment: .topLeading) {
+                            TextField("상세 내용을 작성해주세요", text: $text, axis: .vertical)
+                                .padding()
+                                .frame(height: 200, alignment: .top)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.gray, lineWidth: 1)
                                 )
-                            if text.isEmpty {
-                                VStack {
-                                    HStack {
-                                        Text("상세 내용을 작성해주세요")
-                                            .foregroundStyle(.tertiary)
-                                        Spacer()
-                                    }
-                                    .padding()
-                                    
-                                    Spacer()
-                                }
-                            }
+                            Spacer()
                         }
-                        .frame(height: 200)
                     }
                     .padding(.bottom, 20)
                     
-                    // 교환 희망 장소 선택 버튼
+                    // 교환희망 장소 선택 버튼
                     Text("교환 희망 장소")
                         .bold()
                     Button(action: {
@@ -92,10 +78,10 @@ struct ChangePostingView: View {
                                 .stroke(Color.gray, lineWidth: 1)
                         )
                     }
-                    NavigationLink(destination: Text("교환장소(지도) 표시부분"), isActive: $isDestinationActive) {
+                    .navigationDestination(isPresented: $isDestinationActive) {
+                        Text("교환 장소 선택 뷰")
                         EmptyView()
                     }
-                    
                     .padding(.bottom, 20)
                     
                     // 확인 버튼
@@ -145,8 +131,13 @@ struct ChangePostingView: View {
 struct ImageScrollView: View {
     @Binding var selectedImages: [UIImage]
     @Binding var showActionSheet: Bool
-    @State var photoEditShowModal = false 
+    @State var photoEditShowModal = false
     @State var index: Int = 0
+    @State var selectedIndex: Int? = nil
+    @State private var showingAlert = false
+    @State var items: [String] = []
+    @State var draggedItem : UIImage?
+    
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -157,8 +148,24 @@ struct ImageScrollView: View {
                         .cornerRadius(10)
                         .frame(width: 100, height: 100)
                     VStack {
-                        CameraButton(showActionSheet: $showActionSheet)
-                            .disabled(selectedImages.count >= 5)
+                        if selectedImages.count >= 5 {
+                            Button(action: {
+                                self.showingAlert = true
+                            }) {
+                                Image(systemName: "camera.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(.gray)
+                                    .padding(10)
+                            }
+                            .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("알림"), message: Text("이미지는 최대 5장까지 첨부할 수 있습니다."),
+                                      dismissButton: .default(Text("확인")))
+                            }
+                        } else {
+                            CameraButton(showActionSheet: $showActionSheet)
+                        }
                         HStack {
                             Text("\(selectedImages.count)")
                                 .foregroundStyle(Color(hex:"59AAE0"))
@@ -169,42 +176,55 @@ struct ImageScrollView: View {
                     }
                     .frame(width: 80, height: 80) // 카메라 버튼 범위
                 }
-                ForEach(selectedImages.indices, id: \.self) { index in
+                ForEach(selectedImages.indices, id: \.self) { imageIndex in
+                    let img = selectedImages[imageIndex]
                     ZStack {
                         ZStack {
-                            Image(uiImage: selectedImages[index])
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 100)
-                                .onTapGesture {
-                                    self.index = index
-                                    photoEditShowModal = true
-                                }
-                                    
-                            if index == 0 {
-                                VStack {
-                                    Spacer()
-                                    ZStack {
-                                        Rectangle()
-                                            .fill(Color.black)
-                                            .frame(height: 25)
-                                        Text("대표사진")
-                                            .foregroundStyle(.white)
+                            ZStack {
+                                Image(uiImage: img)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 100)
+                                    .onTapGesture {
+                                        self.index = imageIndex
+                                        photoEditShowModal = true
+                                    }
+                                    .onDrag({
+                                        self.draggedItem = img
+                                        return NSItemProvider(item: nil, typeIdentifier: String(imageIndex))
+                                    })
+                                    .onDrop(of: [UTType.image], delegate: ImageDropDelegate(item: img, items: $selectedImages, draggedItem: $draggedItem))
+                                
+                                if imageIndex == 0 {
+                                    VStack {
+                                        Spacer()
+                                        ZStack {
+                                            Rectangle()
+                                                .fill(Color.black)
+                                                .frame(height: 25)
+                                            Text("대표사진")
+                                                .foregroundStyle(.white)
+                                        }
                                     }
                                 }
                             }
+                            .cornerRadius(10)
                         }
-                        .cornerRadius(10)
-                    }
-                    .overlay {
-                        ZStack {
-                            DeleteImageButton(selectedImages: $selectedImages, index: index)
+                        .overlay {
+                            ZStack {
+                                DeleteImageButton(selectedImages: $selectedImages, items: $items, index: imageIndex)
+                            }
+                            .frame(width: 140, height: 140, alignment: .topTrailing) // Delete버튼 위치
                         }
-                        .frame(width: 140, height: 140, alignment: .topTrailing) // Delete버튼 위치
-                    }
-                    
+                    } // ImageSet
                     .fullScreenCover(isPresented: $photoEditShowModal) {
                         ImageEditorModalView(selectedImages: $selectedImages, showImageEditorModal: $photoEditShowModal, index: $index)
+                    }
+                }
+                .onChange(of: selectedImages) { newValue in
+                    items.removeAll()
+                    for i in selectedImages.indices {
+                        items.append(String(i))
                     }
                 }
             }
@@ -277,6 +297,7 @@ struct CameraButton: View {
 // 이미지 삭제 버튼
 struct DeleteImageButton: View {
     @Binding var selectedImages: [UIImage]
+    @Binding var items: [String]
     var index: Int
     
     var body: some View {
@@ -286,17 +307,40 @@ struct DeleteImageButton: View {
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(.black)
                 .frame(width: 25, height: 25)
-    //            .offset(x: 50, y: -50)
         }
         .frame(width: 35, height: 35) // Delete버튼 범위
         .onTapGesture {
-            selectedImages.remove(at: index)
+            if index < selectedImages.count {
+                selectedImages.remove(at: index)
+            }
         }
-        
     }
 }
 
-
+struct ImageDropDelegate : DropDelegate {
+    
+    let item : UIImage
+    @Binding var items : [UIImage]
+    @Binding var draggedItem : UIImage?
+    
+    func performDrop(info: DropInfo) -> Bool {
+        return true
+    }
+    
+    func dropEntered(info: DropInfo) {
+        guard let draggedItem = self.draggedItem else {
+            return
+        }
+        
+        if draggedItem != item {
+            let from = items.firstIndex(of: draggedItem)!
+            let to = items.firstIndex(of: item)!
+            withAnimation(.default) {
+                self.items.move(fromOffsets: IndexSet(integer: from), toOffset: to > from ? to + 1 : to)
+            }
+        }
+    }
+}
 
 #Preview {
     ChangePostingView()

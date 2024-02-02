@@ -30,7 +30,7 @@ struct FindPostingView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.gray, lineWidth: 1)
                         )
-                        .padding(.bottom, 30)
+                        .padding(.bottom, 20)
                     
                     // 상세 설명 입력 필드
                     VStack(alignment: .leading) {
@@ -60,7 +60,7 @@ struct FindPostingView: View {
                         }
                         .frame(height: 200)
                     }
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
                     
                     // 희망도서 선택 버튼
                     Text("희망도서(선택)")
@@ -90,7 +90,7 @@ struct FindPostingView: View {
                     NavigationLink(destination: Text("희망도서 선택부분"), isActive: $bookDestinationActive) {
                         EmptyView()
                     }
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
                     
                     // 교환 희망 장소 선택 버튼
                     Text("교환 희망 장소")
@@ -121,7 +121,7 @@ struct FindPostingView: View {
                         EmptyView()
                     }
                     
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
                     
                     // 확인 버튼
                     Button(action: {
@@ -135,7 +135,7 @@ struct FindPostingView: View {
                             .background(Color(hex:"59AAE0"))
                             .cornerRadius(10)
                     }
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
                 }
             }
             .padding()
