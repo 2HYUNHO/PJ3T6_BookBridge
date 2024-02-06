@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseStorage
 
 class PostingViewModel: ObservableObject {
-    @Published var noticeBoard: NoticeBoard = NoticeBoard(userId: "", noticeBoardTitle: "", noticeBoardDetail: "", noticeImageLink: [], noticeLocation: [], isChange: false, state: 0, date: Date(), hopeBook: [])
+    @Published var noticeBoard: NoticeBoard = NoticeBoard(userId: "", noticeBoardTitle: "", noticeBoardDetail: "", noticeImageLink: [], noticeLocation: [], isChange: false, state: 0, date: Date(), hopeBook: [], thumnailImage: "")
     
     private var db = Firestore.firestore()
     private var storage = Storage.storage()
@@ -29,7 +29,7 @@ extension PostingViewModel {
         }
         
         // 게시물 정보 생성
-        let post = NoticeBoard(id: noticeBoard.id, userId: "joo", noticeBoardTitle: noticeBoard.noticeBoardTitle, noticeBoardDetail: noticeBoard.noticeBoardDetail, noticeImageLink: noticeBoard.noticeImageLink, noticeLocation: [], isChange: isChange, state: 0, date: Date(), hopeBook: noticeBoard.hopeBook)
+        let post = NoticeBoard(id: noticeBoard.id, userId: "joo", noticeBoardTitle: noticeBoard.noticeBoardTitle, noticeBoardDetail: noticeBoard.noticeBoardDetail, noticeImageLink: noticeBoard.noticeImageLink, noticeLocation: [], isChange: isChange, state: 0, date: Date(), hopeBook: noticeBoard.hopeBook, thumnailImage: "")
         
         // 모든 게시물  noticeBoard/noticeBoardId/
         let linkNoticeBoard = db.collection("noticeBoard").document(noticeBoard.id)

@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseStorage
 
 enum tapCategory : String, CaseIterable {
     case find = "구해요"
@@ -11,7 +12,7 @@ struct HomeView: View {
     @State private var isAnimating = false
     @State private var selectedPicker: tapCategory = .find
     @State private var rotation = 0.0
-    
+    @ObservedObject var homeVMs = HomeViewModel()
     @Namespace private var animation
     
     
@@ -36,7 +37,10 @@ struct HomeView: View {
             }
             tapAnimation()
             
-            HomeTapView(tests: selectedPicker)
+            HomeTapView(homeVMs: homeVMs, tests: selectedPicker)
+        }
+        .onAppear {
+            homeVMs.gettingAllDocs()
         }
     }
     
@@ -72,7 +76,7 @@ struct HomeView: View {
 
 struct HomeTapView : View {
     @State private var texti = ""
-    var homeVMs = HomeViewModel()
+    @ObservedObject var homeVMs : HomeViewModel
     
     var tests : tapCategory
     
@@ -99,20 +103,25 @@ struct HomeTapView : View {
             .padding(.horizontal, 20)
             switch tests {
             case .find:
-                ForEach(0..<5) { _ in
-                        ListItem(imageLink: "scribble.variable", title: "난중일기", author: "이순신", bookmark: true, date: Date.now, locate: "광교 1동")
+                ForEach(homeVMs.noticeBoards) { element in
+                    if !element.isChange {
+                        ListItem(imageStr: element.thumnailImage, title: element.noticeBoardTitle, author: "이순신", bookmark: true, date: element.date,  locate: element.noticeLocation, isChange: element.isChange)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.bottom, 10)
+                    
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 10)
             case .change:
-                ForEach(0..<5) { _ in
-                    ListItem(imageLink: "scribble.variable", title: "난중일기", author: "이순신", bookmark: true, date: Date.now, locate: "광교 1동")
+                ForEach(homeVMs.noticeBoards) { element in
+                    if element.isChange {
+                        ListItem(imageStr: element.thumnailImage, title: element.noticeBoardTitle, author: "이순신", bookmark: true, date: element.date,  locate: element.noticeLocation, isChange: element.isChange)
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 10)
             case .recommend:
-                ForEach(0..<5) { _ in
-                    ListItem(imageLink: "scribble.variable", title: "난중일기", author: "이순신", bookmark: true, date: Date.now, locate: "광교 1동")
+                ForEach(homeVMs.noticeBoards) { element in
+                    ListItem(imageStr: element.thumnailImage, title: element.noticeBoardTitle, author: "이순신", bookmark: true, date: element.date,  locate: element.noticeLocation, isChange: element.isChange)
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 10)
@@ -123,24 +132,52 @@ struct HomeTapView : View {
 
 
 struct ListItem: View {
-    
-    var imageLink: String
+        
+    var imageStr: String
     var title: String
     var author: String
     var bookmark: Bool
     var date: Date
-    var locate: String
+    var locate: [Double]
+    var isChange: Bool
+    
+    
+    @ObservedObject var storageManager = StorageManager.shared
+    @State var image = UIImage()
     
     
     var body: some View {
         HStack {
-            Image(systemName: imageLink)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 75, height: 100)
-                .foregroundStyle(.black)
-                .padding()
- 
+            
+            if imageStr == "" {
+                Image("Character")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 75, height: 100)
+                    .foregroundStyle(.black)
+                    .padding()
+            } else {
+                if isChange {
+                    Image(uiImage: storageManager)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 75, height: 100)
+                        .foregroundStyle(.black)
+                        .padding()
+                } else {
+                    AsyncImage(url: URL(string: imageStr)) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 75, height: 100)
+                            .foregroundStyle(.black)
+                            .padding()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                }
+            }
+            
             
             VStack(alignment: .leading, spacing: 0){
                 Divider().opacity(0)
@@ -158,7 +195,7 @@ struct ListItem: View {
                 
                 Spacer()
                 
-                Text("\(locate) | \(date)")
+                Text("무슨동 | \(date)")
                     .font(.system(size: 10))
                     .padding(.bottom, 10)
                     .foregroundStyle(Color(red: 75/255, green: 75/255, blue: 75/255))
@@ -178,6 +215,10 @@ struct ListItem: View {
             RoundedRectangle(cornerRadius: 10, style: .circular)
                 .foregroundColor(Color(red: 230/255, green: 230/255, blue: 230/255))
         )
+        .onAppear {
+            StorageManager.shared.listItem()
+        }
  
     }
+    
 }
