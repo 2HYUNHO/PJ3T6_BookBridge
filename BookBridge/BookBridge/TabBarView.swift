@@ -19,109 +19,109 @@ struct TabBarView: View {
     @State private var shouldShowActionSheet = false
                    
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // 홈
-            NavigationStack{
+        NavigationStack {
+            TabView(selection: $selectedTab) {
+                // 홈
                 HomeView()
-            }
-            .tabItem {
-                Image(systemName: "house")
-            }
-            .tag(0)
-            
-            
-            // 채팅
-            NavigationStack{
-                ChatRoomListView(uid: "joo")
-            }
-            .tabItem {
-                Image(systemName: "message")
-            }
-            .tag(1)
-            
-            
-            
-            // 게시글 작성
-            NavigationStack(path: $pathModel.paths){
-                HomeView()
-                    .navigationDestination(for: PostPathType.self){ pathType in
-                        switch pathType {
-                        case .findPosting:
-                            ChangePostingView(selectedTab: $selectedTab)
-                                .toolbar(.hidden, for: .tabBar)
-                                .navigationBarBackButtonHidden()
-                        case .changePosting:
-                            FindPostingView(selectedTab: $selectedTab)
-                                .toolbar(.hidden, for: .tabBar)
-                                .navigationBarBackButtonHidden()                            
+                    .tabItem {
+                        Image(systemName: "house")
+                    }
+                    .tag(0)
+                
+                
+                // 채팅
+                NavigationStack{
+                    ChatRoomListView(uid: "joo")
+                }
+                .tabItem {
+                    Image(systemName: "message")
+                }
+                .tag(1)
+                
+                
+                
+                // 게시글 작성
+                NavigationStack(path: $pathModel.paths){
+                    HomeView()
+                        .navigationDestination(for: PostPathType.self){ pathType in
+                            switch pathType {
+                            case .findPosting:
+                                ChangePostingView(selectedTab: $selectedTab)
+                                    .toolbar(.hidden, for: .tabBar)
+                                    .navigationBarBackButtonHidden()
+                            case .changePosting:
+                                FindPostingView(selectedTab: $selectedTab)
+                                    .toolbar(.hidden, for: .tabBar)
+                                    .navigationBarBackButtonHidden()
+                            }
+                            
                         }
+                }
+                .environmentObject(pathModel)
+                .tabItem {
+                    Image(systemName: "plus.circle")
+                        .font(.system(size: 40)) // 플러스 버튼은 크게 표시합니다.
+                }
+                .tag(2)
+                .alert(isPresented: $showingLoginAlert) {
+                    Alert(
+                        title: Text("로그인 필요"),
+                        message: Text("이 기능을 사용하려면 로그인이 필요합니다."),
+                        primaryButton: .default(Text("로그인"), action: {
+                            showingLoginView = true
+                            showingLoginAlert = false
+                        }),
+                        secondaryButton: .cancel{
+                            selectedTab = 0
+                        }
+                    )
+                }
+                
+                
+                // 책장
+                NavigationStack{
+                    if userManager.isLogin {
+                        
+                        
+                        BookShelfView(userId : userManager.uid,initialTapInfo: .wish, isBack: false)
                         
                     }
-            }
-            .environmentObject(pathModel)
-            .tabItem {
-                Image(systemName: "plus.circle")
-                    .font(.system(size: 40)) // 플러스 버튼은 크게 표시합니다.
-            }
-            .tag(2)
-            .alert(isPresented: $showingLoginAlert) {
-                Alert(
-                    title: Text("로그인 필요"),
-                    message: Text("이 기능을 사용하려면 로그인이 필요합니다."),
-                    primaryButton: .default(Text("로그인"), action: {
-                        showingLoginView = true
-                        showingLoginAlert = false
-                    }),
-                    secondaryButton: .cancel{
-                        selectedTab = 0
+                    else {
+                        BookShelfView(userId: nil,initialTapInfo: .wish, isBack: false)
+                            .onAppear {
+                                //                            showingLoginAlert = true
+                            }
                     }
-                )
-            }
-
-            
-            // 책장
-            NavigationStack{
-                if userManager.isLogin {
-
-
-                    BookShelfView(userId : userManager.uid,initialTapInfo: .wish, isBack: false)
-
                 }
-                else {
-                    BookShelfView(userId: nil,initialTapInfo: .wish, isBack: false)
-                        .onAppear {
-//                            showingLoginAlert = true
+                .tabItem {
+                    Image(systemName: "books.vertical")
+                }
+                .tag(3)
+                .alert(isPresented: $showingLoginAlert) {
+                    Alert(
+                        title: Text("로그인 필요"),
+                        message: Text("이 기능을 사용하려면 로그인이 필요합니다."),
+                        primaryButton: .default(Text("로그인"), action: {
+                            showingLoginView = true
+                            showingLoginAlert = false
+                        }),
+                        secondaryButton: .cancel{
+                            selectedTab = 0
                         }
+                    )
                 }
+                
+                
+                //마이페이지
+                NavigationStack{
+                    EmptyView()
+                }
+                .tabItem {
+                    Image(systemName: "person.circle")
+                }
+                .tag(4)
+                
             }
-            .tabItem {
-                Image(systemName: "books.vertical")
-            }
-            .tag(3)
-            .alert(isPresented: $showingLoginAlert) {
-                Alert(
-                    title: Text("로그인 필요"),
-                    message: Text("이 기능을 사용하려면 로그인이 필요합니다."),
-                    primaryButton: .default(Text("로그인"), action: {
-                        showingLoginView = true
-                        showingLoginAlert = false
-                    }),
-                    secondaryButton: .cancel{
-                        selectedTab = 0
-                    }
-                )
-            }
-            
-                                                
-            //마이페이지
-            NavigationStack{
-                EmptyView()
-            }
-            .tabItem {
-                Image(systemName: "person.circle")
-            }
-            .tag(4)
-        
         }
         .tint(Color(hex:"59AAE0"))
         .sheet(isPresented: $showingLoginView, onDismiss: {

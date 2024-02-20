@@ -96,6 +96,15 @@
 		5ADE79E62B6B565F005BB3ED /* SignUpInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE79E52B6B565F005BB3ED /* SignUpInputView.swift */; };
 		5ADE79E82B6B5963005BB3ED /* StatusTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE79E72B6B5963005BB3ED /* StatusTextView.swift */; };
 		5ADE79EA2B6B6715005BB3ED /* SignUpInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE79E92B6B6715005BB3ED /* SignUpInputManager.swift */; };
+		5AF1C3322B84A84C00F6147D /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3312B84A84C00F6147D /* HomeListCell.swift */; };
+		5AF1C3342B84DA1900F6147D /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3332B84DA1900F6147D /* PostImageView.swift */; };
+		5AF1C3362B84DAF100F6147D /* PostUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3352B84DAF100F6147D /* PostUserInfoView.swift */; };
+		5AF1C3382B84DBFB00F6147D /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3372B84DBFB00F6147D /* PostContentView.swift */; };
+		5AF1C33A2B84DC7400F6147D /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3392B84DC7400F6147D /* ChangeLocationView.swift */; };
+		5AF1C33C2B84DED800F6147D /* UserBookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C33B2B84DED800F6147D /* UserBookshelfView.swift */; };
+		5AF1C33E2B84E0E100F6147D /* PostMenuBtnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C33D2B84E0E100F6147D /* PostMenuBtnsView.swift */; };
+		5AF1C3402B84F74900F6147D /* PostChatBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C33F2B84F74900F6147D /* PostChatBtnView.swift */; };
+		5AF1C3422B84F99800F6147D /* PostChatBtnTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3412B84F99800F6147D /* PostChatBtnTextStyle.swift */; };
 		5C85D1672B7C45130065940D /* ReportCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C85D1662B7C45130065940D /* ReportCellView.swift */; };
 		5C8C0DD82B734B8C002963F1 /* NaverReverseGeocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C0DD72B734B8C002963F1 /* NaverReverseGeocoding.swift */; };
 		5C8C0DDA2B734BE0002963F1 /* NaverLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C0DD92B734BE0002963F1 /* NaverLocationService.swift */; };
@@ -279,6 +288,15 @@
 		5ADE79E52B6B565F005BB3ED /* SignUpInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInputView.swift; sourceTree = "<group>"; };
 		5ADE79E72B6B5963005BB3ED /* StatusTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTextView.swift; sourceTree = "<group>"; };
 		5ADE79E92B6B6715005BB3ED /* SignUpInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInputManager.swift; sourceTree = "<group>"; };
+		5AF1C3312B84A84C00F6147D /* HomeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
+		5AF1C3332B84DA1900F6147D /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
+		5AF1C3352B84DAF100F6147D /* PostUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserInfoView.swift; sourceTree = "<group>"; };
+		5AF1C3372B84DBFB00F6147D /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
+		5AF1C3392B84DC7400F6147D /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
+		5AF1C33B2B84DED800F6147D /* UserBookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBookshelfView.swift; sourceTree = "<group>"; };
+		5AF1C33D2B84E0E100F6147D /* PostMenuBtnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMenuBtnsView.swift; sourceTree = "<group>"; };
+		5AF1C33F2B84F74900F6147D /* PostChatBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostChatBtnView.swift; sourceTree = "<group>"; };
+		5AF1C3412B84F99800F6147D /* PostChatBtnTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostChatBtnTextStyle.swift; sourceTree = "<group>"; };
 		5C85D1662B7C45130065940D /* ReportCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCellView.swift; sourceTree = "<group>"; };
 		5C8C0DD72B734B8C002963F1 /* NaverReverseGeocoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverReverseGeocoding.swift; sourceTree = "<group>"; };
 		5C8C0DD92B734BE0002963F1 /* NaverLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverLocationService.swift; sourceTree = "<group>"; };
@@ -513,6 +531,7 @@
 				5A3A440E2B6C741200B66C81 /* InputTextFieldStyle.swift */,
 				5A3A44102B6C75F500B66C81 /* MiddleWhiteBtnStyle.swift */,
 				5A0242142B6D36FF00137AA6 /* LoadingCircle.swift */,
+				5AF1C3412B84F99800F6147D /* PostChatBtnTextStyle.swift */,
 			);
 			path = UIElement;
 			sourceTree = "<group>";
@@ -789,6 +808,7 @@
 				738EDAA02B71EBA30066ADE7 /* HomeTapView.swift */,
 				738EDAA22B71ECA80066ADE7 /* HomeListItemView.swift */,
 				1DE382A62B734E74009A7A15 /* HomeRecentSearchView.swift */,
+				5AF1C3312B84A84C00F6147D /* HomeListCell.swift */,
 			);
 			path = HomeTap;
 			sourceTree = "<group>";
@@ -904,6 +924,13 @@
 				F64B7EF82B8324DA008AB919 /* FindPostingModifyView.swift */,
 				F64B7EFC2B833135008AB919 /* ExChangeHopeModifyView.swift */,
 				5CD606432B7DAABE00AC53DD /* PostMapSeeMoreView.swift */,
+				5AF1C3332B84DA1900F6147D /* PostImageView.swift */,
+				5AF1C3352B84DAF100F6147D /* PostUserInfoView.swift */,
+				5AF1C3372B84DBFB00F6147D /* PostContentView.swift */,
+				5AF1C3392B84DC7400F6147D /* ChangeLocationView.swift */,
+				5AF1C33B2B84DED800F6147D /* UserBookshelfView.swift */,
+				5AF1C33D2B84E0E100F6147D /* PostMenuBtnsView.swift */,
+				5AF1C33F2B84F74900F6147D /* PostChatBtnView.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -1208,12 +1235,14 @@
 				1D84019B2B6779CB00ADEEB5 /* IdLoginView.swift in Sources */,
 				5ADE79E82B6B5963005BB3ED /* StatusTextView.swift in Sources */,
 				5C8C0DD82B734B8C002963F1 /* NaverReverseGeocoding.swift in Sources */,
+				5AF1C33A2B84DC7400F6147D /* ChangeLocationView.swift in Sources */,
 				910F48F92B6CB42D00C0563E /* ImageDropDelegate.swift in Sources */,
 				736127112B6B84AC00943CD7 /* PostingViewModel.swift in Sources */,
 				5A83458E2B74A279000984C4 /* TownSettingSlideView.swift in Sources */,
 				F6DFC8D52B730A2A00931CF9 /* PostView.swift in Sources */,
 				915FD1DE2B7CB7E80008C38B /* NoticeBoardChatView.swift in Sources */,
 				5AA82E542B6764DF006EFC72 /* SignUpAuthCodeBoxView.swift in Sources */,
+				5AF1C3382B84DBFB00F6147D /* PostContentView.swift in Sources */,
 				5A3A44092B6C724500B66C81 /* EmailError.swift in Sources */,
 				5C8C0E3C2B7B29F7002963F1 /* Report.swift in Sources */,
 				5CE454902B68B79000874BCE /* FirestoreService.swift in Sources */,
@@ -1232,6 +1261,7 @@
 				91D7CAF12B82F76D00F7CFF8 /* SwipeBackExtension.swift in Sources */,
 				5C8C0E362B7B298C002963F1 /* ReportDetailView.swift in Sources */,
 				5A3A442A2B6CDB8A00B66C81 /* KeychainManager.swift in Sources */,
+				5AF1C3342B84DA1900F6147D /* PostImageView.swift in Sources */,
 				5A6CC5212B6B192F0037429F /* FormatValidator.swift in Sources */,
 				1DCFB0222B68CB4400250D55 /* FindIdVM.swift in Sources */,
 				5A4F281B2B6BAF9F00FF5483 /* LargeBtnStyle.swift in Sources */,
@@ -1246,6 +1276,7 @@
 				1DA6E06C2B68D9EB00D631D5 /* ChangePasswordView.swift in Sources */,
 				73C962AB2B68C4D800D34D3F /* SearchBooksViewModel.swift in Sources */,
 				738654DD2B7F453400373E30 /* ChatPartnerModel.swift in Sources */,
+				5AF1C33E2B84E0E100F6147D /* PostMenuBtnsView.swift in Sources */,
 				5A3A44202B6C890900B66C81 /* TownSettingMapView.swift in Sources */,
 				5A3A44172B6C779200B66C81 /* PwdError.swift in Sources */,
 				5C85D1672B7C45130065940D /* ReportCellView.swift in Sources */,
@@ -1273,13 +1304,16 @@
 				5ADE79DE2B6B3305005BB3ED /* GoogleAuthModel.swift in Sources */,
 				5A83458A2B749DEA000984C4 /* TownSelectButtonView.swift in Sources */,
 				5ADE79E22B6B34D0005BB3ED /* GoogleAuthViewModel.swift in Sources */,
+				5AF1C3322B84A84C00F6147D /* HomeListCell.swift in Sources */,
 				5A3A44192B6C77A300B66C81 /* PwdConfirmError.swift in Sources */,
 				736127072B6B543A00943CD7 /* NaverAuthManager.swift in Sources */,
 				5AA82E5E2B67891E006EFC72 /* SmtpManager.swift in Sources */,
 				5A3E020B2B6F9FCD008F8CFD /* TestView.swift in Sources */,
 				738EDAA52B7225950066ADE7 /* UIImageExtension.swift in Sources */,
 				5ADE79EA2B6B6715005BB3ED /* SignUpInputManager.swift in Sources */,
+				5AF1C33C2B84DED800F6147D /* UserBookshelfView.swift in Sources */,
 				7361270D2B6B83AC00943CD7 /* CameraButtonView.swift in Sources */,
+				5AF1C3422B84F99800F6147D /* PostChatBtnTextStyle.swift in Sources */,
 				5CE454972B68B8CA00874BCE /* AppleLoginView.swift in Sources */,
 				F60BB0972B71D73900E27F38 /* HomeFirebaseManager.swift in Sources */,
 				915FD1DC2B7CA6A40008C38B /* SearchChatListView.swift in Sources */,
@@ -1331,6 +1365,7 @@
 				1DB39DBA2B6B57B100C1B489 /* BookShelfView.swift in Sources */,
 				F623A51D2B68C01E00B5C159 /* NoticeBoardModel.swift in Sources */,
 				F6DFC8D82B735AE300931CF9 /* PostViewModel.swift in Sources */,
+				5AF1C3362B84DAF100F6147D /* PostUserInfoView.swift in Sources */,
 				5A3E020D2B6FA001008F8CFD /* TestViewModel.swift in Sources */,
 				5A1A168E2B6228290063D408 /* GoogleLoginView.swift in Sources */,
 				910F491C2B6CC66900C0563E /* CameraModalView.swift in Sources */,
@@ -1348,6 +1383,7 @@
 				5A7A4E262B61DFFD00F79C23 /* BookBridgeApp.swift in Sources */,
 				5CE454932B68B7CB00874BCE /* UserModel.swift in Sources */,
 				5A3A44132B6C775D00B66C81 /* PhoneError.swift in Sources */,
+				5AF1C3402B84F74900F6147D /* PostChatBtnView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct PostMapSeeMoreView: View {
+    @Environment(\.dismiss) private var dismiss
     @Binding var lat: Double
     @Binding var lng: Double
     @Binding var noticeBoard: NoticeBoard
-
-    @Environment(\.dismiss) private var dismiss
-
+    
     var body: some View {
-        PostMapView(lat: $lat, lng: $lng)
+        PostMapView(lat: $lat, lng: $lng, isDetail: true)
             .navigationTitle(noticeBoard.isChange ? "바꿔요" : "구해요")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -30,5 +29,6 @@ struct PostMapSeeMoreView: View {
                 }
             }
             .navigationBarBackButtonHidden()
+            .edgesIgnoringSafeArea(.bottom)
     }
 }

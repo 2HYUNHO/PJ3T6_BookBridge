@@ -19,73 +19,73 @@ struct HomeView: View {
     @Namespace private var animation
         
     var body: some View {
-        
-        VStack {
-            HStack {
-                Button {
-                    if userManager.isLogin {
-                        // 로그인시
-                        showingTownSettingView.toggle()
-                    } else {
-                        // 비로그인시
-                        showingLoginView.toggle()
+            VStack {
+                HStack {
+                    Button {
+                        if userManager.isLogin {
+                            // 로그인시
+                            showingTownSettingView.toggle()
+                        } else {
+                            // 비로그인시
+                            showingLoginView.toggle()
+                        }
+                    } label: {
+                        HStack{
+                            Text(userManager.isLogin ? userManager.currentDong : locationManager.dong)
+                            Image(systemName: "chevron.down")
+                        }
+                        .padding(.leading, 20)
+                        .foregroundStyle(.black)
+                        
                     }
-                } label: {
-                    HStack{
-                        Text(userManager.isLogin ? userManager.currentDong : locationManager.dong)
-                        Image(systemName: "chevron.down")
-                    }
-                    .padding(.leading, 20)
-                    .foregroundStyle(.black)
+                    Spacer()
                     
-                }
-                Spacer()
-                
-                // 임시로 만든 로그인/로그아웃 버튼입니다.
-                Button {
-                    if userManager.isLogin {
-                        userManager.logout()
-                    } else {
-                        showingLoginView.toggle()
+                    // 임시로 만든 로그인/로그아웃 버튼입니다.
+                    Button {
+                        if userManager.isLogin {
+                            userManager.logout()
+                        } else {
+                            showingLoginView.toggle()
+                        }
+                    } label: {
+                        Text(userManager.isLogin ? "로그아웃" : "로그인")
                     }
-                } label: {
-                    Text(userManager.isLogin ? "로그아웃" : "로그인")
+                    .padding(.trailing, 20)
                 }
-                .padding(.trailing, 20)
+                
+                tapAnimation()
+                
+                HomeTapView(viewModel: viewModel, tapCategory: selectedPicker)
             }
-            
-            tapAnimation()
-            
-            HomeTapView(viewModel: viewModel, tapCategory: selectedPicker)
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    viewModel.updateNoticeBoards()
+                }
+            }
+            .sheet(isPresented: $showingLoginView) {
+                LoginView(showingLoginView: $showingLoginView)
+            }
+            .navigationDestination(isPresented: $showingTownSettingView) {
+                TownSettingView()
+                    .toolbar(.hidden, for: .tabBar)
+            }
+            .onChange(of: userManager.isLogin) { _ in
+                print("로그인 변동 감지")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    viewModel.updateNoticeBoards()
+                }
+            }
+            .onChange(of: locationManager.dong) { _ in
+                print("현재위치 변동 감지")
+                if !userManager.isLogin {
+                    viewModel.updateNoticeBoards()
+                }
+            }
+            .onChange(of: userManager.isChanged) { _ in
+                print("선택한동 변동 감지")
                 viewModel.updateNoticeBoards()
             }
-        }
-        .sheet(isPresented: $showingLoginView) {
-            LoginView(showingLoginView: $showingLoginView)
-        }
-        .navigationDestination(isPresented: $showingTownSettingView) {
-              TownSettingView()
-                .toolbar(.hidden, for: .tabBar)
-        }
-        .onChange(of: userManager.isLogin) { _ in
-            print("로그인 변동 감지")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                viewModel.updateNoticeBoards()
-            }
-        }
-        .onChange(of: locationManager.dong) { _ in
-            print("현재위치 변동 감지")
-            if !userManager.isLogin {
-                viewModel.updateNoticeBoards()
-            }
-        }
-        .onChange(of: userManager.isChanged) { _ in
-            print("선택한동 변동 감지")
-            viewModel.updateNoticeBoards()
-        }
+        
     }
     
     

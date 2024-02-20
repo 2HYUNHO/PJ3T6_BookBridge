@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//
 struct HomeTapView: View {
     @StateObject var viewModel: HomeViewModel
     @StateObject var locationManager = LocationManager.shared
@@ -87,33 +87,22 @@ struct HomeTapView: View {
                 switch tapCategory {
                 case .find:             //TODO: imageLinks 부분 받아오기
                     ForEach(viewModel.findNoticeBoards) { element in
-                        if element.hopeBook.isEmpty {
-                            NavigationLink {
-                                PostView(noticeBoard: element)
-                            } label: {
-                                HomeListItemView(author: "", date: element.date, id: element.id, imageLinks: [], isChange: element.isChange, locate: element.noticeLocation, title: element.noticeBoardTitle, userId: "joo")
-                            }
-                        } else {
-                            //TODO: 나중에 썸네일 이미지, 저자 바꾸기
-                            
-                            NavigationLink {
-                                PostView(noticeBoard: element)
-                            } label: {
-                                HomeListItemView(author: element.hopeBook[0].volumeInfo.authors?[0] ?? "", date: element.date, id: element.id, imageLinks: [element.hopeBook[0].volumeInfo.imageLinks?.smallThumbnail ?? ""], isChange: element.isChange, locate: element.noticeLocation, title: element.noticeBoardTitle, userId: "joo")
-                            }
-                            
-                        }
+                        HomeListCell(
+                            noticeBoard: element,
+                            isHopobookEmpty: element.hopeBook.isEmpty,
+                            type: .find
+                        )
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 10)
                     
                 case .change:
                     ForEach(viewModel.changeNoticeBoards) { element in
-                        NavigationLink {
-                            PostView(noticeBoard: element)
-                        } label: {
-                            HomeListItemView(author: "", date: element.date, id: element.id, imageLinks: element.noticeImageLink, isChange: element.isChange, locate: element.noticeLocation, title: element.noticeBoardTitle, userId: "joo")
-                        }
+                        HomeListCell(
+                            noticeBoard: element,
+                            isHopobookEmpty: element.hopeBook.isEmpty,
+                            type: .change
+                        )
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 10)
@@ -141,35 +130,24 @@ struct HomeTapView: View {
                 }
                 
                 switch tapCategory {
-                case .find:             //TODO: imageLinks 부분 받아오기
+                case .find:
                     ForEach(viewModel.findNoticeBoards) { element in
-                        if element.hopeBook.isEmpty {
-                            NavigationLink {
-                                PostView(noticeBoard: element)
-                            } label: {
-                                HomeListItemView(author: "", date: element.date, id: element.id, imageLinks: [], isChange: element.isChange, locate: element.noticeLocation, title: element.noticeBoardTitle, userId: "joo")
-                            }
-                        } else {
-                            //TODO: 나중에 썸네일 이미지, 저자 바꾸기
-                            
-                            NavigationLink {
-                                PostView(noticeBoard: element)
-                            } label: {
-                                HomeListItemView(author: element.hopeBook[0].volumeInfo.authors?[0] ?? "", date: element.date, id: element.id, imageLinks: [element.hopeBook[0].volumeInfo.imageLinks?.smallThumbnail ?? ""], isChange: element.isChange, locate: element.noticeLocation, title: element.noticeBoardTitle, userId: "joo")
-                            }
-                            
-                        }
+                        HomeListCell(
+                            noticeBoard: element,
+                            isHopobookEmpty: element.hopeBook.isEmpty,
+                            type: .find
+                        )
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 10)
                     
                 case .change:
                     ForEach(viewModel.changeNoticeBoards) { element in
-                        NavigationLink {
-                            PostView(noticeBoard: element)
-                        } label: {
-                            HomeListItemView(author: "", date: element.date, id: element.id, imageLinks: element.noticeImageLink, isChange: element.isChange, locate: element.noticeLocation, title: element.noticeBoardTitle, userId: "joo")
-                        }
+                        HomeListCell(
+                            noticeBoard: element,
+                            isHopobookEmpty: element.hopeBook.isEmpty,
+                            type: .change
+                        )
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 10)
