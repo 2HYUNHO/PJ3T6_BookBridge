@@ -23,10 +23,8 @@ struct HomeView: View {
                 HStack {
                     Button {
                         if userManager.isLogin {
-                            // 로그인시
                             showingTownSettingView.toggle()
                         } else {
-                            // 비로그인시
                             showingLoginView.toggle()
                         }
                     } label: {
@@ -39,8 +37,7 @@ struct HomeView: View {
                         
                     }
                     Spacer()
-                    
-                    // 임시로 만든 로그인/로그아웃 버튼입니다.
+                                        
                     Button {
                         if userManager.isLogin {
                             userManager.logout()

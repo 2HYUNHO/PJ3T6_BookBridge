@@ -88,6 +88,7 @@
 		5AA97F832B70754D00EF4081 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA97F822B70754D00EF4081 /* LocationManager.swift */; };
 		5AA97F862B709C4000EF4081 /* FirestoreSignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA97F852B709C4000EF4081 /* FirestoreSignUpManager.swift */; };
 		5AA97F892B70BCF000EF4081 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA97F882B70BCF000EF4081 /* BundleExtension.swift */; };
+		5AD20E952B85782F009B8CEC /* PostMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD20E942B85782F009B8CEC /* PostMapView.swift */; };
 		5ADE79D32B6B2798005BB3ED /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 5ADE79D22B6B2798005BB3ED /* SwiftSMTP */; };
 		5ADE79DA2B6B2C99005BB3ED /* CertiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE79D92B6B2C99005BB3ED /* CertiResult.swift */; };
 		5ADE79DE2B6B3305005BB3ED /* GoogleAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADE79DD2B6B3305005BB3ED /* GoogleAuthModel.swift */; };
@@ -100,7 +101,7 @@
 		5AF1C3342B84DA1900F6147D /* PostImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3332B84DA1900F6147D /* PostImageView.swift */; };
 		5AF1C3362B84DAF100F6147D /* PostUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3352B84DAF100F6147D /* PostUserInfoView.swift */; };
 		5AF1C3382B84DBFB00F6147D /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3372B84DBFB00F6147D /* PostContentView.swift */; };
-		5AF1C33A2B84DC7400F6147D /* ChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3392B84DC7400F6147D /* ChangeLocationView.swift */; };
+		5AF1C33A2B84DC7400F6147D /* PostChangeLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C3392B84DC7400F6147D /* PostChangeLocationView.swift */; };
 		5AF1C33C2B84DED800F6147D /* UserBookshelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C33B2B84DED800F6147D /* UserBookshelfView.swift */; };
 		5AF1C33E2B84E0E100F6147D /* PostMenuBtnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C33D2B84E0E100F6147D /* PostMenuBtnsView.swift */; };
 		5AF1C3402B84F74900F6147D /* PostChatBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF1C33F2B84F74900F6147D /* PostChatBtnView.swift */; };
@@ -281,6 +282,7 @@
 		5AA97F852B709C4000EF4081 /* FirestoreSignUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSignUpManager.swift; sourceTree = "<group>"; };
 		5AA97F882B70BCF000EF4081 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		5AB3C77A2B83307500D8C317 /* Secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		5AD20E942B85782F009B8CEC /* PostMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMapView.swift; sourceTree = "<group>"; };
 		5ADE79D92B6B2C99005BB3ED /* CertiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertiResult.swift; sourceTree = "<group>"; };
 		5ADE79DD2B6B3305005BB3ED /* GoogleAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthModel.swift; sourceTree = "<group>"; };
 		5ADE79DF2B6B3351005BB3ED /* GoogleSignResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignResultModel.swift; sourceTree = "<group>"; };
@@ -292,7 +294,7 @@
 		5AF1C3332B84DA1900F6147D /* PostImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageView.swift; sourceTree = "<group>"; };
 		5AF1C3352B84DAF100F6147D /* PostUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserInfoView.swift; sourceTree = "<group>"; };
 		5AF1C3372B84DBFB00F6147D /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
-		5AF1C3392B84DC7400F6147D /* ChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLocationView.swift; sourceTree = "<group>"; };
+		5AF1C3392B84DC7400F6147D /* PostChangeLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostChangeLocationView.swift; sourceTree = "<group>"; };
 		5AF1C33B2B84DED800F6147D /* UserBookshelfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBookshelfView.swift; sourceTree = "<group>"; };
 		5AF1C33D2B84E0E100F6147D /* PostMenuBtnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMenuBtnsView.swift; sourceTree = "<group>"; };
 		5AF1C33F2B84F74900F6147D /* PostChatBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostChatBtnView.swift; sourceTree = "<group>"; };
@@ -920,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				F6DFC8D42B730A2A00931CF9 /* PostView.swift */,
+				5AD20E942B85782F009B8CEC /* PostMapView.swift */,
 				F64B7EF62B8323E6008AB919 /* ChangePostingModifyView.swift */,
 				F64B7EF82B8324DA008AB919 /* FindPostingModifyView.swift */,
 				F64B7EFC2B833135008AB919 /* ExChangeHopeModifyView.swift */,
@@ -927,7 +930,7 @@
 				5AF1C3332B84DA1900F6147D /* PostImageView.swift */,
 				5AF1C3352B84DAF100F6147D /* PostUserInfoView.swift */,
 				5AF1C3372B84DBFB00F6147D /* PostContentView.swift */,
-				5AF1C3392B84DC7400F6147D /* ChangeLocationView.swift */,
+				5AF1C3392B84DC7400F6147D /* PostChangeLocationView.swift */,
 				5AF1C33B2B84DED800F6147D /* UserBookshelfView.swift */,
 				5AF1C33D2B84E0E100F6147D /* PostMenuBtnsView.swift */,
 				5AF1C33F2B84F74900F6147D /* PostChatBtnView.swift */,
@@ -1235,7 +1238,7 @@
 				1D84019B2B6779CB00ADEEB5 /* IdLoginView.swift in Sources */,
 				5ADE79E82B6B5963005BB3ED /* StatusTextView.swift in Sources */,
 				5C8C0DD82B734B8C002963F1 /* NaverReverseGeocoding.swift in Sources */,
-				5AF1C33A2B84DC7400F6147D /* ChangeLocationView.swift in Sources */,
+				5AF1C33A2B84DC7400F6147D /* PostChangeLocationView.swift in Sources */,
 				910F48F92B6CB42D00C0563E /* ImageDropDelegate.swift in Sources */,
 				736127112B6B84AC00943CD7 /* PostingViewModel.swift in Sources */,
 				5A83458E2B74A279000984C4 /* TownSettingSlideView.swift in Sources */,
@@ -1288,6 +1291,7 @@
 				5ADE79E62B6B565F005BB3ED /* SignUpInputView.swift in Sources */,
 				5A9A33852B628D9E00982E92 /* GoogleSignManager.swift in Sources */,
 				5A3A440F2B6C741200B66C81 /* InputTextFieldStyle.swift in Sources */,
+				5AD20E952B85782F009B8CEC /* PostMapView.swift in Sources */,
 				911B4C8B2B74A4AF00801CFF /* FirebaseConstants.swift in Sources */,
 				1D71C6C52B6C766300EEC95D /* BookSearchBar.swift in Sources */,
 				736127052B6B538800943CD7 /* NaverLoginView.swift in Sources */,

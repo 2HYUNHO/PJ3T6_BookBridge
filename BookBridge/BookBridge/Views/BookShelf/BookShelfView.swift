@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-
-
-
-
-
 struct BookShelfView: View {
     @StateObject private var viewModel: BookShelfViewModel
     @State private var selectedPicker: tapInfo

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum PostChatBtnViewError: Error {
+    case Image
+}
+
 struct PostChatBtnView: View {
     @StateObject var postViewModel: PostViewModel
     @Binding var noticeBoard: NoticeBoard
@@ -14,6 +18,7 @@ struct PostChatBtnView: View {
     var body: some View {
         VStack {
             Spacer()
+            
             if UserManager.shared.uid == noticeBoard.userId {
                 NavigationLink {
                     ChatRoomListView(uid: UserManager.shared.uid)
@@ -29,18 +34,14 @@ struct PostChatBtnView: View {
                 else if noticeBoard.state == 0 {
                     if postViewModel.chatRoomList.isEmpty {
                         NavigationLink {
-                            if let uiImage = UIImage(systemName: "scribble") {
-                                createChatMessageView(with: uiImage)
-                            }
+                            createChatMessageView()
                         } label: {
                             Text("채팅하기")
                                 .modifier(PostChatBtnTextStyle())
                         }
                     } else {
                         NavigationLink {
-                            if let uiImage = UIImage(systemName: "scribble") {
-                                createChatMessageView(with: uiImage)
-                            }
+                            createChatMessageView()
                         } label: {
                             Text("채팅하기")
                                 .modifier(PostChatBtnTextStyle())
@@ -67,12 +68,19 @@ extension PostChatBtnView {
         return chatPartnerModel
     }
     
-    func createChatMessageView(with uiImage: UIImage) -> some View {
-        ChatMessageView(
-            chatRoomListId: UUID().uuidString,
-            noticeBoardTitle: noticeBoard.noticeBoardTitle,
-            chatRoomPartner: createChatPartnerModel(with: uiImage),
-            uid: UserManager.shared.uid
-        )
+    func createChatMessageView() -> AnyView? {
+        if let image = UIImage(named: "DefaultImage") {
+            return AnyView(
+                ChatMessageView(
+                    chatRoomListId: UUID().uuidString,
+                    noticeBoardTitle: noticeBoard.noticeBoardTitle,
+                    chatRoomPartner: createChatPartnerModel(with: image),
+                    uid: UserManager.shared.uid
+                )
+            )
+        } else {
+            print("createChatMessageView: Image를 불러오지 못합니다.")
+            return nil
+        }
     }
 }

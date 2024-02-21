@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PostMapSeeMoreView: View {
+struct PostMapDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var lat: Double
     @Binding var lng: Double
