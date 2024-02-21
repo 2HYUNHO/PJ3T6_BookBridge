@@ -84,11 +84,11 @@ struct TabBarView: View {
                 if userManager.isLogin {
 
 
-                    BookShelfView(userId : userManager.uid,initialTapInfo: .wish, isBack: false)
+                    BookShelfView(userId : userManager.uid,initialTapInfo: .wish)
 
                 }
                 else {
-                    BookShelfView(userId: nil,initialTapInfo: .wish, isBack: false)
+                    BookShelfView(userId: nil,initialTapInfo: .wish)
                         .onAppear {
 //                            showingLoginAlert = true
                         }

@@ -23,17 +23,15 @@ struct BookShelfView: View {
     @State private var userName: String = ""
     @Environment(\.dismiss) private var dismiss
     @State private var isOwnShelf: Bool = true
-    var isBack : Bool?
     var userId : String?
     let pickerItems : [tapInfo] = [.wish, .hold]
     
     
     
-    init(userId: String?,initialTapInfo: tapInfo,isBack:Bool) {
-        _viewModel = StateObject(wrappedValue: BookShelfViewModel(userId: userId))
+    init(userId: String?, initialTapInfo: tapInfo) {
         self.userId = userId
+        _viewModel = StateObject(wrappedValue: BookShelfViewModel(userId: userId))
         _selectedPicker = State(initialValue: initialTapInfo)
-        self.isBack = isBack
     }
     
     
@@ -55,8 +53,6 @@ struct BookShelfView: View {
     var body: some View {
         
         ZStack{
-            
-            
             VStack {
                 ZStack{
                     if userId == UserManager.shared.uid  {
@@ -70,16 +66,13 @@ struct BookShelfView: View {
                     }
                     
                     HStack{
-                        
-                        if isBack! {
-                            
                             Button(action: {
-                                dismiss()
+                                dismiss()                                
                             }) {
                                 Image(systemName: "chevron.left")
                             }
                             
-                        }
+                        
                         
                         Spacer()
                         if userId == UserManager.shared.uid || userId == nil {
@@ -100,9 +93,9 @@ struct BookShelfView: View {
                 .padding(.top,8)
                 
                 Picker("선택", selection: $selectedPicker) {
-                    ForEach(pickerItems, id: \.self) { item in
-                        Text(item.rawValue)
-                    }
+//                    ForEach(pickerItems, id: \.self) { item in
+//                        Text(item.rawValue)
+//                    }
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: selectedPicker) { newValue in
@@ -139,7 +132,7 @@ struct BookShelfView: View {
                 viewModel.fetchBooks(for: selectedPicker)
             }
             
-            if userId == UserManager.shared.uid || userId == nil {
+            if (userId == UserManager.shared.uid) || (userId == nil) {
                 AddBookBtnView(showingSheet: $showingSheet)
                     .padding(.trailing, 20)
                     .padding(.bottom, 50)
@@ -180,14 +173,19 @@ struct BookShelfView: View {
         }
         .onAppear{
             if userId != nil {
-                viewModel.gettingUserInfo(userId: self.userId ?? "")
+                viewModel.gettingUserInfo(userId: self.userId!)
+                print(self.userId!)
+                print("!!!!!")
             }
             
+//
         }
-        
-        
     }
+    
+    
+    
 }
+
 
 
 

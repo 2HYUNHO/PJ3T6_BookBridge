@@ -165,7 +165,6 @@ class BookShelfViewModel: ObservableObject {
                 let data = document.data()
                 if let data = data {
                     print("data", data)
-                    
                     let user = UserModel(
                         id: data["id"] as? String,
                         email: data["email"] as? String,
