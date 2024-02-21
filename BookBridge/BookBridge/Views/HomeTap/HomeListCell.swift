@@ -30,7 +30,7 @@ struct HomeListCell: View {
                             isChange: noticeBoard.isChange,
                             locate: noticeBoard.noticeLocation,
                             title: noticeBoard.noticeBoardTitle,
-                            userId: "joo",
+                            userId: noticeBoard.userId,
                             location: noticeBoard.noticeLocationName
                         )
                     } else {
@@ -42,7 +42,7 @@ struct HomeListCell: View {
                             isChange: noticeBoard.isChange,
                             locate: noticeBoard.noticeLocation,
                             title: noticeBoard.noticeBoardTitle,
-                            userId: "joo",
+                            userId: noticeBoard.userId,
                             location: noticeBoard.noticeLocationName
                         )
                     }
@@ -55,7 +55,7 @@ struct HomeListCell: View {
                         isChange: noticeBoard.isChange,
                         locate: noticeBoard.noticeLocation,
                         title: noticeBoard.noticeBoardTitle,
-                        userId: "joo",
+                        userId: noticeBoard.userId,
                         location: noticeBoard.noticeLocationName
                     )
                 }               

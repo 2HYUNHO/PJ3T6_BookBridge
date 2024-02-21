@@ -161,7 +161,7 @@ struct HomeTapView: View {
         }
         .environmentObject(viewModel)
         .onAppear {
-            viewModel.fetchBookMark(user: "joo")
+            viewModel.fetchBookMark(user: UserManager.shared.uid)
         }
     }
 }
